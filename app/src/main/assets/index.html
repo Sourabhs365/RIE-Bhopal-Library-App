@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <title>RIE Bhopal Library</title>
 
@@ -11,6 +11,7 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
 }
 
 html{
@@ -18,24 +19,22 @@ html{
 }
 
 body{
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:Arial,Helvetica,sans-serif;
     background:#f5f7fb;
     color:#172033;
-    padding-bottom:80px;
+    padding-bottom:82px;
 }
 
-a{
-    text-decoration:none;
-    color:inherit;
+button{
+    font-family:inherit;
 }
-
-/* HEADER */
 
 .header{
-    background:linear-gradient(135deg,#0b3d73,#1675b9);
+    background:linear-gradient(135deg,#073b73,#1676ba);
     color:#fff;
     padding:24px 18px 30px;
-    border-radius:0 0 28px 28px;
+    border-radius:0 0 30px 30px;
+    box-shadow:0 8px 25px rgba(7,59,115,.18);
 }
 
 .header-row{
@@ -44,23 +43,24 @@ a{
 }
 
 .logo{
-    width:52px;
-    height:52px;
+    width:54px;
+    height:54px;
     background:#fff;
-    border-radius:15px;
+    border-radius:16px;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:27px;
+    font-size:28px;
     flex-shrink:0;
 }
 
 .header-text{
-    margin-left:12px;
+    margin-left:13px;
 }
 
 .header-text h1{
     font-size:19px;
+    font-weight:800;
     margin-bottom:4px;
 }
 
@@ -70,42 +70,44 @@ a{
 }
 
 .welcome{
-    margin-top:25px;
+    margin-top:24px;
 }
 
 .welcome span{
     font-size:10px;
+    letter-spacing:.8px;
     opacity:.75;
-    letter-spacing:.7px;
 }
 
 .welcome h2{
-    margin-top:6px;
     font-size:24px;
+    margin-top:6px;
 }
 
 /* SEARCH */
 
 .search{
-    margin:-18px 17px 20px;
+    margin:-19px 17px 22px;
     background:#fff;
-    border-radius:16px;
+    border-radius:17px;
     padding:14px 16px;
     display:flex;
     align-items:center;
-    box-shadow:0 7px 20px rgba(0,0,0,.08);
+    gap:10px;
+    box-shadow:0 7px 22px rgba(20,40,80,.10);
 }
 
 .search-icon{
     font-size:18px;
-    margin-right:10px;
 }
 
 .search input{
+    width:100%;
     border:0;
     outline:0;
-    width:100%;
     font-size:14px;
+    color:#26354d;
+    background:transparent;
 }
 
 /* MAIN */
@@ -131,7 +133,7 @@ a{
 
 .section-title span{
     font-size:10px;
-    color:#7a8799;
+    color:#7b8799;
 }
 
 /* FEATURE */
@@ -139,15 +141,15 @@ a{
 .feature{
     background:linear-gradient(135deg,#123f78,#2183c3);
     color:#fff;
-    border-radius:20px;
     padding:19px;
-    box-shadow:0 8px 20px rgba(18,63,120,.18);
+    border-radius:21px;
+    box-shadow:0 9px 22px rgba(18,63,120,.20);
 }
 
 .feature small{
-    opacity:.75;
     font-size:10px;
     letter-spacing:.8px;
+    opacity:.75;
 }
 
 .feature h3{
@@ -162,14 +164,14 @@ a{
 }
 
 .feature button{
-    margin-top:14px;
+    border:0;
     background:#fff;
     color:#123f78;
-    border:0;
-    border-radius:10px;
-    padding:10px 14px;
-    font-weight:bold;
-    cursor:pointer;
+    border-radius:11px;
+    padding:10px 15px;
+    margin-top:14px;
+    font-size:11px;
+    font-weight:700;
 }
 
 /* CARDS */
@@ -182,28 +184,29 @@ a{
 
 .card{
     background:#fff;
-    border:1px solid #e7ebf2;
+    border:1px solid #e6ebf2;
     border-radius:18px;
     padding:15px;
-    min-height:125px;
-    box-shadow:0 4px 12px rgba(0,0,0,.035);
+    min-height:132px;
+    box-shadow:0 5px 14px rgba(20,40,80,.045);
     cursor:pointer;
+    transition:transform .12s ease;
 }
 
 .card:active{
-    transform:scale(.98);
+    transform:scale(.97);
 }
 
 .icon{
-    width:42px;
-    height:42px;
-    background:#edf5ff;
+    width:43px;
+    height:43px;
     border-radius:13px;
+    background:#edf5ff;
     display:flex;
     align-items:center;
     justify-content:center;
     font-size:21px;
-    margin-bottom:10px;
+    margin-bottom:11px;
 }
 
 .card h3{
@@ -213,30 +216,38 @@ a{
 
 .card p{
     font-size:10px;
-    line-height:1.4;
     color:#778397;
+    line-height:1.4;
+}
+
+/* IMPORTANT CARD */
+
+.important{
+    border:1px solid #dce9f8;
 }
 
 /* NOTICE */
 
 .notice{
     background:#fff;
-    border:1px solid #e7ebf2;
-    border-radius:16px;
+    border:1px solid #e6ebf2;
+    border-radius:17px;
     padding:14px;
-    margin-bottom:9px;
     display:flex;
     gap:11px;
+    margin-bottom:10px;
+    cursor:pointer;
 }
 
 .notice-icon{
-    width:38px;
-    height:38px;
+    width:39px;
+    height:39px;
+    border-radius:12px;
     background:#fff3df;
-    border-radius:11px;
     display:flex;
     align-items:center;
     justify-content:center;
+    flex-shrink:0;
 }
 
 .notice h4{
@@ -260,8 +271,8 @@ a{
 
 .stat{
     background:#fff;
-    border:1px solid #e7ebf2;
-    border-radius:15px;
+    border:1px solid #e6ebf2;
+    border-radius:16px;
     padding:14px 5px;
     text-align:center;
 }
@@ -286,30 +297,31 @@ a{
     color:#8995a6;
     font-size:9px;
     line-height:1.5;
-    padding:25px 10px;
+    padding:27px 10px;
 }
 
 /* BOTTOM NAV */
 
 .bottom{
     position:fixed;
-    bottom:0;
     left:0;
     right:0;
-    height:70px;
-    background:#fff;
+    bottom:0;
+    height:72px;
+    background:rgba(255,255,255,.98);
     border-top:1px solid #e5e9ef;
     display:flex;
     justify-content:space-around;
     align-items:center;
     z-index:1000;
-    box-shadow:0 -5px 18px rgba(0,0,0,.06);
+    box-shadow:0 -5px 18px rgba(0,0,0,.07);
 }
 
 .nav{
     text-align:center;
     font-size:9px;
     color:#7b8798;
+    min-width:60px;
     cursor:pointer;
 }
 
@@ -320,10 +332,10 @@ a{
 
 .nav.active{
     color:#123f78;
-    font-weight:bold;
+    font-weight:700;
 }
 
-/* MOBILE */
+/* SMALL PHONES */
 
 @media(max-width:360px){
 
@@ -356,15 +368,15 @@ a{
     .bottom{
         max-width:700px;
         left:50%;
+        right:auto;
+        width:700px;
         transform:translateX(-50%);
     }
 }
 </style>
 </head>
 
-
 <body>
-
 
 <!-- HEADER -->
 
@@ -377,15 +389,23 @@ a{
         </div>
 
         <div class="header-text">
+
             <h1>RIE Bhopal Library</h1>
-            <p>Learning Resource Centre • NCERT</p>
+
+            <p>
+                Learning Resource Centre • NCERT
+            </p>
+
         </div>
 
     </div>
 
+
     <div class="welcome">
 
-        <span>WELCOME TO YOUR DIGITAL LIBRARY</span>
+        <span>
+            DIGITAL LIBRARY
+        </span>
 
         <h2>
             Explore. Learn. Discover.
@@ -405,7 +425,7 @@ a{
     <input
         type="text"
         placeholder="Search library resources..."
-        onclick="openWebsite()"
+        onclick="openFullLibrary()"
         readonly
     >
 
@@ -421,7 +441,9 @@ a{
 
     <div class="feature">
 
-        <small>LIBRARY PORTAL</small>
+        <small>
+            RIE BHOPAL LIBRARY
+        </small>
 
         <h3>
             Your library,
@@ -429,13 +451,13 @@ a{
         </h3>
 
         <p>
-            Access e-resources, books, journals,
-            research support and important
-            library services quickly.
+            Quickly access the catalogue, institutional
+            repository, ONOS, e-books, journals,
+            newspapers and research resources.
         </p>
 
-        <button onclick="openWebsite()">
-            Open Full Library →
+        <button onclick="openFullLibrary()">
+            Open Library Portal →
         </button>
 
     </div>
@@ -443,97 +465,112 @@ a{
 </section>
 
 
-<!-- QUICK ACCESS -->
+<!-- MOST IMPORTANT -->
 
 <section class="section">
 
     <div class="section-title">
-        <h2>Quick Access</h2>
-        <span>Important</span>
+
+        <h2>
+            Important Services
+        </h2>
+
+        <span>
+            Quick Access
+        </span>
+
     </div>
 
 
     <div class="grid">
 
 
-        <div class="card" onclick="openPage('https://riebhopallibrary.joomla.com/index.php/remote-access-e-resources')">
+        <!-- CATALOGUE -->
 
-            <div class="icon">🌐</div>
+        <div
+            class="card important"
+            onclick="openPage('http://13.126.40.108:8001/')"
+        >
 
-            <h3>E-Resources</h3>
+            <div class="icon">
+                📖
+            </div>
+
+            <h3>
+                Library Catalogue
+            </h3>
 
             <p>
-                Digital resources and
-                online databases.
+                Search books and library
+                collection through Koha.
             </p>
 
         </div>
 
 
-        <div class="card" onclick="openPage('https://riebhopallibrary.joomla.com/index.php/e-library/open-access-e-resources')">
+        <!-- REPOSITORY -->
 
-            <div class="icon">📖</div>
+        <div
+            class="card important"
+            onclick="openPage('http://13.126.40.108:8080/jspui/')"
+        >
 
-            <h3>Open Access</h3>
+            <div class="icon">
+                🗄️
+            </div>
+
+            <h3>
+                Institutional Repository
+            </h3>
 
             <p>
-                Free books, journals
-                and OER resources.
+                Access institutional research
+                and digital documents.
             </p>
 
         </div>
 
 
-        <div class="card" onclick="openPage('https://riebhopallibrary.joomla.com/index.php/research-support-service')">
+        <!-- ONOS -->
 
-            <div class="icon">🧪</div>
+        <div
+            class="card important"
+            onclick="openPage('https://www.onos.gov.in/ums/check-access')"
+        >
 
-            <h3>Research Support</h3>
+            <div class="icon">
+                🌐
+            </div>
+
+            <h3>
+                ONOS
+            </h3>
 
             <p>
-                Research tools and
+                One Nation One Subscription
                 scholarly resources.
             </p>
 
         </div>
 
 
-        <div class="card" onclick="openPage('https://riebhopallibrary.joomla.com/index.php/e-library/list-of-periodicals/e-journals')">
+        <!-- NEWSPAPERS -->
 
-            <div class="icon">📰</div>
+        <div
+            class="card important"
+            onclick="openPage('https://riebhopallibrary.joomla.com/index.php/e-library/list-of-periodicals/newspapers')"
+        >
 
-            <h3>E-Journals</h3>
+            <div class="icon">
+                🗞️
+            </div>
 
-            <p>
-                Electronic journals
-                and collections.
-            </p>
-
-        </div>
-
-
-        <div class="card" onclick="openPage('https://riebhopallibrary.joomla.com/index.php/e-library/open-e-book-collection')">
-
-            <div class="icon">📚</div>
-
-            <h3>E-Books</h3>
+            <h3>
+                Newspapers
+            </h3>
 
             <p>
-                Electronic books and
-                reading resources.
-            </p>
-
-        </div>
-
-
-        <div class="card" onclick="openPage('https://riebhopallibrary.joomla.com/index.php/e-library/list-of-periodicals/newspapers')">
-
-            <div class="icon">🗞️</div>
-
-            <h3>Newspapers</h3>
-
-            <p>
-                Newspaper resources
+                Access newspaper resources
                 and information.
             </p>
 
@@ -545,22 +582,183 @@ a{
 </section>
 
 
-<!-- NOTICES -->
+<!-- DIGITAL RESOURCES -->
 
 <section class="section">
 
     <div class="section-title">
 
-        <h2>Library Updates</h2>
+        <h2>
+            Digital Resources
+        </h2>
 
-        <span>Latest</span>
+        <span>
+            Explore
+        </span>
+
+    </div>
+
+
+    <div class="grid">
+
+
+        <!-- NEW E TEXTBOOK -->
+
+        <div
+            class="card"
+            onclick="openPage('https://riebhopallibrary.joomla.com/index.php/new-e-textbook')"
+        >
+
+            <div class="icon">
+                📘
+            </div>
+
+            <h3>
+                New E-Textbooks
+            </h3>
+
+            <p>
+                Explore newly added
+                electronic textbooks.
+            </p>
+
+        </div>
+
+
+        <!-- E BOOKS -->
+
+        <div
+            class="card"
+            onclick="openPage('https://riebhopallibrary.joomla.com/index.php/e-library/open-e-book-collection')"
+        >
+
+            <div class="icon">
+                📚
+            </div>
+
+            <h3>
+                E-Books
+            </h3>
+
+            <p>
+                Electronic books and
+                reading resources.
+            </p>
+
+        </div>
+
+
+        <!-- E JOURNALS -->
+
+        <div
+            class="card"
+            onclick="openPage('https://riebhopallibrary.joomla.com/index.php/e-library/list-of-periodicals/e-journals')"
+        >
+
+            <div class="icon">
+                📰
+            </div>
+
+            <h3>
+                E-Journals
+            </h3>
+
+            <p>
+                Electronic journals and
+                scholarly collections.
+            </p>
+
+        </div>
+
+
+        <!-- OPEN ACCESS -->
+
+        <div
+            class="card"
+            onclick="openPage('https://riebhopallibrary.joomla.com/index.php/e-library/open-access-e-resources')"
+        >
+
+            <div class="icon">
+                🔓
+            </div>
+
+            <h3>
+                Open Access
+            </h3>
+
+            <p>
+                Free books, journals and
+                open resources.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- RESEARCH -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <h2>
+            Research Support
+        </h2>
 
     </div>
 
 
     <div
         class="notice"
-        onclick="openWebsite()"
+        onclick="openPage('https://riebhopallibrary.joomla.com/index.php/research-support-service')"
+    >
+
+        <div class="notice-icon">
+            🧪
+        </div>
+
+        <div>
+
+            <h4>
+                Research Support Services
+            </h4>
+
+            <p>
+                Access research tools, scholarly
+                resources and support services.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- UPDATES -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <h2>
+            Library Updates
+        </h2>
+
+        <span>
+            Latest
+        </span>
+
+    </div>
+
+
+    <div
+        class="notice"
+        onclick="openFullLibrary()"
     >
 
         <div class="notice-icon">
@@ -569,11 +767,13 @@ a{
 
         <div>
 
-            <h4>New Arrivals</h4>
+            <h4>
+                New Arrivals
+            </h4>
 
             <p>
-                View latest books and
-                newly added resources.
+                View newly added books and
+                library resources.
             </p>
 
         </div>
@@ -583,7 +783,7 @@ a{
 
     <div
         class="notice"
-        onclick="openWebsite()"
+        onclick="openFullLibrary()"
     >
 
         <div class="notice-icon">
@@ -592,7 +792,9 @@ a{
 
         <div>
 
-            <h4>Library Notices</h4>
+            <h4>
+                Library Notices
+            </h4>
 
             <p>
                 Check current announcements
@@ -612,7 +814,9 @@ a{
 
     <div class="section-title">
 
-        <h2>Our Collection</h2>
+        <h2>
+            Our Collection
+        </h2>
 
     </div>
 
@@ -620,18 +824,41 @@ a{
     <div class="stats">
 
         <div class="stat">
-            <strong>71K+</strong>
-            <span>Books</span>
+
+            <strong>
+                71K+
+            </strong>
+
+            <span>
+                Books
+            </span>
+
         </div>
 
-        <div class="stat">
-            <strong>10K+</strong>
-            <span>E-Resources</span>
-        </div>
 
         <div class="stat">
-            <strong>130+</strong>
-            <span>Journals</span>
+
+            <strong>
+                10K+
+            </strong>
+
+            <span>
+                E-Resources
+            </span>
+
+        </div>
+
+
+        <div class="stat">
+
+            <strong>
+                130+
+            </strong>
+
+            <span>
+                Journals
+            </span>
+
         </div>
 
     </div>
@@ -639,13 +866,15 @@ a{
 </section>
 
 
-<!-- SERVICES -->
+<!-- MORE -->
 
 <section class="section">
 
     <div class="section-title">
 
-        <h2>More Services</h2>
+        <h2>
+            More
+        </h2>
 
     </div>
 
@@ -655,16 +884,20 @@ a{
 
         <div
             class="card"
-            onclick="openWebsite()"
+            onclick="openFullLibrary()"
         >
 
-            <div class="icon">ℹ️</div>
+            <div class="icon">
+                ℹ️
+            </div>
 
-            <h3>About Library</h3>
+            <h3>
+                About Library
+            </h3>
 
             <p>
-                Library information,
-                facilities and services.
+                Library facilities,
+                services and information.
             </p>
 
         </div>
@@ -675,9 +908,13 @@ a{
             onclick="openPage('https://riebhopallibrary.joomla.com/index.php/contact')"
         >
 
-            <div class="icon">☎️</div>
+            <div class="icon">
+                ☎️
+            </div>
 
-            <h3>Contact</h3>
+            <h3>
+                Contact
+            </h3>
 
             <p>
                 Contact the library
@@ -689,16 +926,20 @@ a{
 
         <div
             class="card"
-            onclick="openWebsite()"
+            onclick="openFullLibrary()"
         >
 
-            <div class="icon">🔗</div>
+            <div class="icon">
+                🔗
+            </div>
 
-            <h3>All Services</h3>
+            <h3>
+                All Services
+            </h3>
 
             <p>
-                Explore complete
-                library services.
+                Explore the complete
+                library portal.
             </p>
 
         </div>
@@ -706,16 +947,20 @@ a{
 
         <div
             class="card"
-            onclick="openWebsite()"
+            onclick="openFullLibrary()"
         >
 
-            <div class="icon">🏛️</div>
+            <div class="icon">
+                🏛️
+            </div>
 
-            <h3>RIE Bhopal</h3>
+            <h3>
+                RIE Bhopal
+            </h3>
 
             <p>
                 Official library
-                portal.
+                website.
             </p>
 
         </div>
@@ -725,6 +970,8 @@ a{
 
 </section>
 
+
+<!-- FOOTER -->
 
 <div class="footer">
 
@@ -744,12 +991,15 @@ a{
 
 <nav class="bottom">
 
+
     <div
         class="nav active"
         onclick="goHome()"
     >
 
-        <div class="nav-icon">⌂</div>
+        <div class="nav-icon">
+            ⌂
+        </div>
 
         Home
 
@@ -758,24 +1008,28 @@ a{
 
     <div
         class="nav"
-        onclick="openPage('https://riebhopallibrary.joomla.com/index.php/remote-access-e-resources')"
+        onclick="openPage('http://13.126.40.108:8001/')"
     >
 
-        <div class="nav-icon">🌐</div>
+        <div class="nav-icon">
+            📖
+        </div>
 
-        Resources
+        Catalogue
 
     </div>
 
 
     <div
         class="nav"
-        onclick="openPage('https://riebhopallibrary.joomla.com/index.php/research-support-service')"
+        onclick="openPage('https://www.onos.gov.in/ums/check-access')"
     >
 
-        <div class="nav-icon">🧪</div>
+        <div class="nav-icon">
+            🌐
+        </div>
 
-        Research
+        ONOS
 
     </div>
 
@@ -785,28 +1039,31 @@ a{
         onclick="openPage('https://riebhopallibrary.joomla.com/index.php/contact')"
     >
 
-        <div class="nav-icon">☎</div>
+        <div class="nav-icon">
+            ☎
+        </div>
 
         Contact
 
     </div>
+
 
 </nav>
 
 
 <script>
 
-function openWebsite(){
+function openPage(url){
 
-    window.location.href =
-    "https://riebhopallibrary.joomla.com/";
+    window.location.href = url;
 
 }
 
 
-function openPage(url){
+function openFullLibrary(){
 
-    window.location.href = url;
+    window.location.href =
+    "https://riebhopallibrary.joomla.com/";
 
 }
 
@@ -821,7 +1078,6 @@ function goHome(){
 }
 
 </script>
-
 
 </body>
 </html>
