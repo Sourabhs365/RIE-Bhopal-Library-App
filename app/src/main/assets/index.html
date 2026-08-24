@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>RIE Bhopal Library</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f5f7fb;
+    color:#172033;
+    padding-bottom:80px;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* HEADER */
+
+.header{
+    background:linear-gradient(135deg,#0b3d73,#1675b9);
+    color:#fff;
+    padding:24px 18px 30px;
+    border-radius:0 0 28px 28px;
+}
+
+.header-row{
+    display:flex;
+    align-items:center;
+}
+
+.logo{
+    width:52px;
+    height:52px;
+    background:#fff;
+    border-radius:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:27px;
+    flex-shrink:0;
+}
+
+.header-text{
+    margin-left:12px;
+}
+
+.header-text h1{
+    font-size:19px;
+    margin-bottom:4px;
+}
+
+.header-text p{
+    font-size:11px;
+    opacity:.85;
+}
+
+.welcome{
+    margin-top:25px;
+}
+
+.welcome span{
+    font-size:10px;
+    opacity:.75;
+    letter-spacing:.7px;
+}
+
+.welcome h2{
+    margin-top:6px;
+    font-size:24px;
+}
+
+/* SEARCH */
+
+.search{
+    margin:-18px 17px 20px;
+    background:#fff;
+    border-radius:16px;
+    padding:14px 16px;
+    display:flex;
+    align-items:center;
+    box-shadow:0 7px 20px rgba(0,0,0,.08);
+}
+
+.search-icon{
+    font-size:18px;
+    margin-right:10px;
+}
+
+.search input{
+    border:0;
+    outline:0;
+    width:100%;
+    font-size:14px;
+}
+
+/* MAIN */
+
+.container{
+    padding:0 17px;
+}
+
+.section{
+    margin-top:22px;
+}
+
+.section-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:12px;
+}
+
+.section-title h2{
+    font-size:17px;
+}
+
+.section-title span{
+    font-size:10px;
+    color:#7a8799;
+}
+
+/* FEATURE */
+
+.feature{
+    background:linear-gradient(135deg,#123f78,#2183c3);
+    color:#fff;
+    border-radius:20px;
+    padding:19px;
+    box-shadow:0 8px 20px rgba(18,63,120,.18);
+}
+
+.feature small{
+    opacity:.75;
+    font-size:10px;
+    letter-spacing:.8px;
+}
+
+.feature h3{
+    font-size:20px;
+    margin:7px 0;
+}
+
+.feature p{
+    font-size:11px;
+    line-height:1.5;
+    opacity:.9;
+}
+
+.feature button{
+    margin-top:14px;
+    background:#fff;
+    color:#123f78;
+    border:0;
+    border-radius:10px;
+    padding:10px 14px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* CARDS */
+
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:11px;
+}
+
+.card{
+    background:#fff;
+    border:1px solid #e7ebf2;
+    border-radius:18px;
+    padding:15px;
+    min-height:125px;
+    box-shadow:0 4px 12px rgba(0,0,0,.035);
+    cursor:pointer;
+}
+
+.card:active{
+    transform:scale(.98);
+}
+
+.icon{
+    width:42px;
+    height:42px;
+    background:#edf5ff;
+    border-radius:13px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:21px;
+    margin-bottom:10px;
+}
+
+.card h3{
+    font-size:13px;
+    margin-bottom:5px;
+}
+
+.card p{
+    font-size:10px;
+    line-height:1.4;
+    color:#778397;
+}
+
+/* NOTICE */
+
+.notice{
+    background:#fff;
+    border:1px solid #e7ebf2;
+    border-radius:16px;
+    padding:14px;
+    margin-bottom:9px;
+    display:flex;
+    gap:11px;
+}
+
+.notice-icon{
+    width:38px;
+    height:38px;
+    background:#fff3df;
+    border-radius:11px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.notice h4{
+    font-size:12px;
+    margin-bottom:4px;
+}
+
+.notice p{
+    font-size:10px;
+    color:#778397;
+    line-height:1.4;
+}
+
+/* STATS */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:9px;
+}
+
+.stat{
+    background:#fff;
+    border:1px solid #e7ebf2;
+    border-radius:15px;
+    padding:14px 5px;
+    text-align:center;
+}
+
+.stat strong{
+    display:block;
+    font-size:18px;
+    color:#123f78;
+}
+
+.stat span{
+    display:block;
+    margin-top:4px;
+    font-size:9px;
+    color:#788497;
+}
+
+/* FOOTER */
+
+.footer{
+    text-align:center;
+    color:#8995a6;
+    font-size:9px;
+    line-height:1.5;
+    padding:25px 10px;
+}
+
+/* BOTTOM NAV */
+
+.bottom{
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    height:70px;
+    background:#fff;
+    border-top:1px solid #e5e9ef;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    z-index:1000;
+    box-shadow:0 -5px 18px rgba(0,0,0,.06);
+}
+
+.nav{
+    text-align:center;
+    font-size:9px;
+    color:#7b8798;
+    cursor:pointer;
+}
+
+.nav-icon{
+    font-size:20px;
+    margin-bottom:3px;
+}
+
+.nav.active{
+    color:#123f78;
+    font-weight:bold;
+}
+
+/* MOBILE */
+
+@media(max-width:360px){
+
+    .header-text h1{
+        font-size:17px;
+    }
+
+    .welcome h2{
+        font-size:21px;
+    }
+
+    .grid{
+        gap:8px;
+    }
+
+    .card{
+        padding:12px;
+    }
+}
+
+/* TABLET */
+
+@media(min-width:700px){
+
+    body{
+        max-width:700px;
+        margin:auto;
+    }
+
+    .bottom{
+        max-width:700px;
+        left:50%;
+        transform:translateX(-50%);
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <div class="header-row">
+
+        <div class="logo">
+            📚
+        </div>
+
+        <div class="header-text">
+            <h1>RIE Bhopal Library</h1>
+            <p>Learning Resource Centre • NCERT</p>
+        </div>
+
+    </div>
+
+    <div class="welcome">
+
+        <span>WELCOME TO YOUR DIGITAL LIBRARY</span>
+
+        <h2>
+            Explore. Learn. Discover.
+        </h2>
+
+    </div>
+
+</header>
+
+
+<!-- SEARCH -->
+
+<div class="search">
+
+    <span class="search-icon">🔍</span>
+
+    <input
+        type="text"
+        placeholder="Search library resources..."
+        onclick="openWebsite()"
+        readonly
+    >
+
+</div>
+
+
+<main class="container">
+
+
+<!-- FEATURE -->
+
+<section class="section">
+
+    <div class="feature">
+
+        <small>LIBRARY PORTAL</small>
+
+        <h3>
+            Your library,
+            in your pocket.
+        </h3>
+
+        <p>
+            Access e-resources, books, journals,
+            research support and important
+            library services quickly.
+        </p>
+
+        <button onclick="openWebsite()">
+            Open Full Library →
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- QUICK ACCESS -->
+
+<section class="section">
+
+    <div class="section-title">
+        <h2>Quick Access</h2>
+        <span>Important</span>
+    </div>
+
+
+    <div class="grid">
+
+
+        <div class="card" onclick="openPage('https://riebhopallibrary.joomla.com/index.php/remote-access-e-resources')">
+
+            <div class="icon">🌐</div>
+
+            <h3>E-Resources</h3>
+
+            <p>
+                Digital resources and
+                online databases.
+            </p>
+
+        </div>
+
+
+        <div class="card" onclick="openPage('https://riebhopallibrary.joomla.com/index.php/e-library/open-access-e-resources')">
+
+            <div class="icon">📖</div>
+
+            <h3>Open Access</h3>
+
+            <p>
+                Free books, journals
+                and OER resources.
+            </p>
+
+        </div>
+
+
+        <div class="card" onclick="openPage('https://riebhopallibrary.joomla.com/index.php/research-support-service')">
+
+            <div class="icon">🧪</div>
+
+            <h3>Research Support</h3>
+
+            <p>
+                Research tools and
+                scholarly resources.
+            </p>
+
+        </div>
+
+
+        <div class="card" onclick="openPage('https://riebhopallibrary.joomla.com/index.php/e-library/list-of-periodicals/e-journals')">
+
+            <div class="icon">📰</div>
+
+            <h3>E-Journals</h3>
+
+            <p>
+                Electronic journals
+                and collections.
+            </p>
+
+        </div>
+
+
+        <div class="card" onclick="openPage('https://riebhopallibrary.joomla.com/index.php/e-library/open-e-book-collection')">
+
+            <div class="icon">📚</div>
+
+            <h3>E-Books</h3>
+
+            <p>
+                Electronic books and
+                reading resources.
+            </p>
+
+        </div>
+
+
+        <div class="card" onclick="openPage('https://riebhopallibrary.joomla.com/index.php/e-library/list-of-periodicals/newspapers')">
+
+            <div class="icon">🗞️</div>
+
+            <h3>Newspapers</h3>
+
+            <p>
+                Newspaper resources
+                and information.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- NOTICES -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <h2>Library Updates</h2>
+
+        <span>Latest</span>
+
+    </div>
+
+
+    <div
+        class="notice"
+        onclick="openWebsite()"
+    >
+
+        <div class="notice-icon">
+            🆕
+        </div>
+
+        <div>
+
+            <h4>New Arrivals</h4>
+
+            <p>
+                View latest books and
+                newly added resources.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div
+        class="notice"
+        onclick="openWebsite()"
+    >
+
+        <div class="notice-icon">
+            📢
+        </div>
+
+        <div>
+
+            <h4>Library Notices</h4>
+
+            <p>
+                Check current announcements
+                and important updates.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- COLLECTION -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <h2>Our Collection</h2>
+
+    </div>
+
+
+    <div class="stats">
+
+        <div class="stat">
+            <strong>71K+</strong>
+            <span>Books</span>
+        </div>
+
+        <div class="stat">
+            <strong>10K+</strong>
+            <span>E-Resources</span>
+        </div>
+
+        <div class="stat">
+            <strong>130+</strong>
+            <span>Journals</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SERVICES -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <h2>More Services</h2>
+
+    </div>
+
+
+    <div class="grid">
+
+
+        <div
+            class="card"
+            onclick="openWebsite()"
+        >
+
+            <div class="icon">ℹ️</div>
+
+            <h3>About Library</h3>
+
+            <p>
+                Library information,
+                facilities and services.
+            </p>
+
+        </div>
+
+
+        <div
+            class="card"
+            onclick="openPage('https://riebhopallibrary.joomla.com/index.php/contact')"
+        >
+
+            <div class="icon">☎️</div>
+
+            <h3>Contact</h3>
+
+            <p>
+                Contact the library
+                support team.
+            </p>
+
+        </div>
+
+
+        <div
+            class="card"
+            onclick="openWebsite()"
+        >
+
+            <div class="icon">🔗</div>
+
+            <h3>All Services</h3>
+
+            <p>
+                Explore complete
+                library services.
+            </p>
+
+        </div>
+
+
+        <div
+            class="card"
+            onclick="openWebsite()"
+        >
+
+            <div class="icon">🏛️</div>
+
+            <h3>RIE Bhopal</h3>
+
+            <p>
+                Official library
+                portal.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<div class="footer">
+
+    Learning Resource Centre<br>
+
+    Regional Institute of Education, Bhopal<br>
+
+    Shyamla Hills, Bhopal – 462002
+
+</div>
+
+
+</main>
+
+
+<!-- BOTTOM NAV -->
+
+<nav class="bottom">
+
+    <div
+        class="nav active"
+        onclick="goHome()"
+    >
+
+        <div class="nav-icon">⌂</div>
+
+        Home
+
+    </div>
+
+
+    <div
+        class="nav"
+        onclick="openPage('https://riebhopallibrary.joomla.com/index.php/remote-access-e-resources')"
+    >
+
+        <div class="nav-icon">🌐</div>
+
+        Resources
+
+    </div>
+
+
+    <div
+        class="nav"
+        onclick="openPage('https://riebhopallibrary.joomla.com/index.php/research-support-service')"
+    >
+
+        <div class="nav-icon">🧪</div>
+
+        Research
+
+    </div>
+
+
+    <div
+        class="nav"
+        onclick="openPage('https://riebhopallibrary.joomla.com/index.php/contact')"
+    >
+
+        <div class="nav-icon">☎</div>
+
+        Contact
+
+    </div>
+
+</nav>
+
+
+<script>
+
+function openWebsite(){
+
+    window.location.href =
+    "https://riebhopallibrary.joomla.com/";
+
+}
+
+
+function openPage(url){
+
+    window.location.href = url;
+
+}
+
+
+function goHome(){
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+</script>
+
+
+</body>
+</html>
