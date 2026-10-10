@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#073b73">
+<title>RIE Bhopal Library</title>
+<style>
+:root{--p:#073b73;--p2:#0f5ea8;--a:#f2a900;--bg:#f2f5fa;--c:#fff;--ink:#14213a;--mu:#6b7a92;--ln:#e3e9f2;--sh:0 6px 20px rgba(7,59,115,.09)}
+@media(prefers-color-scheme:dark){:root{--bg:#0c1524;--c:#142238;--ink:#e8eefb;--mu:#93a3bd;--ln:#223250;--sh:0 6px 20px rgba(0,0,0,.35)}}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.45;padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+button{font-family:inherit;color:inherit}
+svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.hd{background:linear-gradient(150deg,var(--p),var(--p2));color:#fff;padding:calc(18px + env(safe-area-inset-top)) 18px 56px;border-radius:0 0 28px 28px}
+.row{display:flex;align-items:center;gap:12px}
+.lg{width:46px;height:46px;border-radius:14px;background:#fff;color:var(--p);display:grid;place-items:center}
+.lg svg{width:26px;height:26px}
+.hd h1{font-size:18px;font-weight:800;line-height:1.15}.hd small{font-size:12px;opacity:.8}
+.gr{margin-top:20px;font-size:13px;opacity:.8}.hd h2{font-size:24px;margin-top:2px;font-weight:800;line-height:1.2}
+.sr{margin:-26px 16px 0;background:var(--c);border-radius:16px;box-shadow:var(--sh);display:flex;align-items:center;gap:10px;padding:0 16px;position:relative;z-index:2}
+.sr svg{color:var(--mu)}.sr input{flex:1;border:0;outline:0;background:none;font-size:15px;padding:16px 0;color:var(--ink);min-width:0}
+.ct{padding:0 16px}
+.sec{margin-top:24px}.st{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+.st h3{font-size:17px;font-weight:800}.st span{font-size:12px;color:var(--mu)}
+.hero{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#0b4a8c,#1f7fc4);color:#fff;border-radius:20px;padding:18px;margin-top:20px;box-shadow:var(--sh);width:100%;border:0;text-align:left;cursor:pointer}
+.hero b{display:block;font-size:17px}.hero small{opacity:.85;font-size:12.5px}.hero .go{margin-left:auto;background:var(--a);color:#3a2900;border-radius:12px;padding:9px 14px;font-weight:800;font-size:13px;white-space:nowrap}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.q{background:var(--c);border:0;border-radius:16px;padding:14px 4px 12px;text-align:center;box-shadow:var(--sh);cursor:pointer}
+.q:active,.li:active,.dc:active{transform:scale(.97)}
+.ic{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;margin:0 auto 7px}
+.q span{font-size:11.5px;font-weight:700;display:block;line-height:1.2}
+.hs{display:flex;gap:12px;overflow-x:auto;margin:0 -16px;padding:2px 16px 8px;scroll-snap-type:x mandatory;scrollbar-width:none}.hs::-webkit-scrollbar{display:none}
+.dc{flex:0 0 150px;scroll-snap-align:start;background:var(--c);border:0;border-radius:18px;padding:16px;text-align:left;box-shadow:var(--sh);cursor:pointer}
+.dc .ic{margin:0 0 12px}.dc b{display:block;font-size:14.5px}.dc small{color:var(--mu);font-size:12px;display:block;margin-top:2px}
+.ls{background:var(--c);border-radius:18px;box-shadow:var(--sh);overflow:hidden}
+.li{display:flex;align-items:center;gap:13px;padding:13px 14px;border-bottom:1px solid var(--ln);cursor:pointer;width:100%;background:none;border-left:0;border-right:0;border-top:0;text-align:left}
+.li:last-child{border-bottom:0}.li .ic{margin:0;width:40px;height:40px;border-radius:12px}
+.li .tx{flex:1;min-width:0}.li b{display:block;font-size:14.5px}.li small{display:block;color:var(--mu);font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fv{border:0;background:none;color:var(--mu);padding:6px;cursor:pointer}.fv.on{color:var(--a)}.fv.on svg{fill:var(--a)}
+.chev{color:var(--mu);width:18px;height:18px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.sb{background:var(--c);border-radius:16px;padding:16px 8px;text-align:center;box-shadow:var(--sh)}
+.sb b{font-size:24px;font-weight:800;color:var(--p2);display:block;line-height:1.1}.sb small{font-size:12px;color:var(--mu)}
+@media(prefers-color-scheme:dark){.sb b{color:#6db4f5}}
+.info{background:var(--c);border-radius:18px;padding:18px;box-shadow:var(--sh)}
+.info h4{font-size:16px;margin-bottom:2px}.info p{color:var(--mu);font-size:13.5px}
+.acts{display:flex;gap:10px;margin-top:14px}
+.bt{flex:1;display:flex;justify-content:center;align-items:center;gap:8px;border:0;border-radius:12px;padding:12px;font-weight:700;font-size:14px;cursor:pointer;background:var(--p);color:#fff}
+.bt.o{background:var(--bg);color:var(--ink);border:1px solid var(--ln)}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:16px 16px 4px;scrollbar-width:none}.chips::-webkit-scrollbar{display:none}
+.ch{border:1px solid var(--ln);background:var(--c);border-radius:99px;padding:8px 15px;font-size:13px;font-weight:700;white-space:nowrap;cursor:pointer;color:var(--mu)}
+.ch.on{background:var(--p);border-color:var(--p);color:#fff}
+.pg{display:none}.pg.on{display:block}
+.pt{font-size:22px;font-weight:800;padding:calc(20px + env(safe-area-inset-top)) 16px 0}
+.emp{padding:30px 16px;text-align:center;color:var(--mu)}
+.off{display:none;background:#b3261e;color:#fff;text-align:center;font-size:13px;padding:7px;position:sticky;top:0;z-index:20}
+nav{position:fixed;left:0;right:0;bottom:0;background:var(--c);border-top:1px solid var(--ln);display:flex;padding:6px 6px calc(6px + env(safe-area-inset-bottom));z-index:30;box-shadow:0 -6px 20px rgba(7,59,115,.08)}
+nav button{flex:1;border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:3px;padding:7px 0;font-size:11.5px;font-weight:700;color:var(--mu);cursor:pointer;border-radius:12px}
+nav button.on{color:var(--p2)}nav button.on svg{stroke-width:2.4}
+@media(prefers-color-scheme:dark){nav button.on{color:#6db4f5}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+<symbol id="book" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20V3H6.5A2.5 2.5 0 004 5.5v14zM20 17v4H6.5"/></symbol>
+<symbol id="srch" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></symbol>
+<symbol id="db" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></symbol>
+<symbol id="globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></symbol>
+<symbol id="news" viewBox="0 0 24 24"><path d="M4 5h13v14a2 2 0 002 2H6a2 2 0 01-2-2V5zM17 9h3v10a2 2 0 01-2 2M7 9h7M7 13h7M7 17h4"/></symbol>
+<symbol id="tb" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></symbol>
+<symbol id="jr" viewBox="0 0 24 24"><path d="M5 4h11a3 3 0 013 3v13H8a3 3 0 01-3-3V4zM9 9h6M9 13h6"/></symbol>
+<symbol id="lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 017.5-2"/></symbol>
+<symbol id="flask" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 9a2 2 0 002 3h10a2 2 0 002-3l-5-9V3M8 15h8"/></symbol>
+<symbol id="new" viewBox="0 0 24 24"><path d="M12 3l2.4 5 5.6.8-4 3.9.9 5.5L12 15.5 7.1 18.2 8 12.7 4 8.8 9.6 8z"/></symbol>
+<symbol id="bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0112 0c0 7 3 8 3 8H3s3-1 3-8M10 21a2 2 0 004 0"/></symbol>
+<symbol id="info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></symbol>
+<symbol id="ph" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></symbol>
+<symbol id="home" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 9.5V21h5v-6h4v6h5V9.5"/></symbol>
+<symbol id="grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+<symbol id="star" viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></symbol>
+<symbol id="chev" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
+<symbol id="map" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11a7 7 0 10-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+</defs></svg>
+
+<div class="off" id="off">You are offline. Library links need internet.</div>
+
+<!-- HOME -->
+<section class="pg on" id="p-home">
+<div class="hd">
+<div class="row"><div class="lg"><svg><use href="#book"/></svg></div><div><h1>RIE Bhopal Library</h1><small>Learning Resource Centre · NCERT</small></div></div>
+<div class="gr" id="gr"></div><h2>Your library,<br>in your pocket.</h2>
+</div>
+<label class="sr"><svg><use href="#srch"/></svg><input id="q" type="search" placeholder="Search catalogue, e-books, journals…" aria-label="Search services" enterkeyhint="search"></label>
+<div class="ct">
+<div id="res" style="display:none"><div class="sec"><div class="st"><h3>Results</h3><span id="rc"></span></div><div class="ls" id="rl"></div></div></div>
+<div id="home">
+<button class="hero" data-u="https://riebhopallibrary.joomla.com/"><svg style="width:34px;height:34px"><use href="#globe"/></svg><div><b>Library portal</b><small>Full website with all services</small></div><span class="go">Open</span></button>
+<div class="sec" id="favs" style="display:none"><div class="st"><h3>Your favourites</h3><span>Tap the star to add</span></div><div class="ls" id="fl"></div></div>
+<div class="sec"><div class="st"><h3>Important services</h3></div><div class="g4" id="g4"></div></div>
+<div class="sec"><div class="st"><h3>Digital resources</h3><span>Swipe</span></div><div class="hs" id="hs"></div></div>
+<div class="sec"><div class="st"><h3>Research support</h3></div><div class="ls" id="rs"></div></div>
+<div class="sec"><div class="st"><h3>Library updates</h3></div><div class="ls" id="up"></div></div>
+<div class="sec"><div class="st"><h3>Our collection</h3></div><div class="stats"><div class="sb"><b>71K+</b><small>Books</small></div><div class="sb"><b>10K+</b><small>E-resources</small></div><div class="sb"><b>130+</b><small>Journals</small></div></div></div>
+<div class="sec"><div class="info"><h4>Learning Resource Centre</h4><p>Regional Institute of Education, Bhopal<br>Shyamla Hills, Bhopal – 462002</p>
+<div class="acts"><button class="bt" data-u="https://riebhopallibrary.joomla.com/index.php/contact"><svg><use href="#ph"/></svg>Contact</button><button class="bt o" data-u="https://www.google.com/maps/search/?api=1&query=Regional+Institute+of+Education+Bhopal"><svg><use href="#map"/></svg>Directions</button></div></div></div>
+</div></div>
+</section>
+
+<!-- EXPLORE -->
+<section class="pg" id="p-explore">
+<div class="pt">All services</div>
+<div class="chips" id="chips"></div>
+<div class="ct"><div class="sec" style="margin-top:14px"><div class="ls" id="el"></div></div></div>
+</section>
+
+<!-- CONTACT -->
+<section class="pg" id="p-contact">
+<div class="pt">Contact & about</div>
+<div class="ct"><div class="sec" style="margin-top:14px"><div class="info"><h4>Learning Resource Centre</h4><p>Regional Institute of Education, Bhopal<br>Shyamla Hills, Bhopal – 462002</p>
+<div class="acts"><button class="bt" data-u="https://riebhopallibrary.joomla.com/index.php/contact"><svg><use href="#ph"/></svg>Contact page</button><button class="bt o" data-u="https://www.google.com/maps/search/?api=1&query=Regional+Institute+of+Education+Bhopal"><svg><use href="#map"/></svg>Directions</button></div></div></div>
+<div class="sec"><div class="ls" id="cl"></div></div></div>
+</section>
+
+<nav aria-label="Main">
+<button class="on" data-t="home"><svg><use href="#home"/></svg>Home</button>
+<button data-t="explore"><svg><use href="#grid"/></svg>Explore</button>
+<button data-u="http://13.126.40.108:8001/"><svg><use href="#book"/></svg>Catalogue</button>
+<button data-u="https://www.onos.gov.in/ums/check-access"><svg><use href="#globe"/></svg>ONOS</button>
+<button data-t="contact"><svg><use href="#ph"/></svg>Contact</button>
+</nav>
+
+<script>
+var J="https://riebhopallibrary.joomla.com/";
+/* ==== EDIT HERE: g=group, i=icon, c=colour [bg,fg] ==== */
+var C={b:["#e3effc","#0f5ea8"],g:["#e2f5ec","#12805c"],p:["#efe9fb","#6a45c2"],o:["#fff0e0","#d9660b"],t:["#e0f4f6","#0b7285"],r:["#fde8ee","#c2255c"]};
+var S=[
+{g:"Services",i:"book",c:"b",t:"Library Catalogue",d:"Search books and collection (Koha)",u:"http://13.126.40.108:8001/"},
+{g:"Services",i:"db",c:"g",t:"Institutional Repository",d:"Research and digital documents",u:"http://13.126.40.108:8080/jspui/"},
+{g:"Services",i:"globe",c:"p",t:"ONOS",d:"One Nation One Subscription resources",u:"https://www.onos.gov.in/ums/check-access"},
+{g:"Services",i:"news",c:"o",t:"Newspapers",d:"Newspaper resources and information",u:J+"index.php/e-library/list-of-periodicals/newspapers"},
+{g:"Digital",i:"tb",c:"t",t:"New E-Textbooks",d:"Newly added electronic textbooks",u:J+"index.php/new-e-textbook"},
+{g:"Digital",i:"book",c:"b",t:"E-Books",d:"Electronic books and reading resources",u:J+"index.php/e-library/open-e-book-collection"},
+{g:"Digital",i:"jr",c:"r",t:"E-Journals",d:"Electronic journals and scholarly collections",u:J+"index.php/e-library/list-of-periodicals/e-journals"},
+{g:"Digital",i:"lock",c:"g",t:"Open Access",d:"Free books, journals and open resources",u:J+"index.php/e-library/open-access-e-resources"},
+{g:"Research",i:"flask",c:"p",t:"Research Support Services",d:"Research tools, scholarly resources and support",u:J+"index.php/research-support-service"},
+{g:"Updates",i:"new",c:"o",t:"New Arrivals",d:"Newly added books and library resources",u:J},
+{g:"Updates",i:"bell",c:"r",t:"Library Notices",d:"Current announcements and important updates",u:J},
+{g:"About",i:"info",c:"b",t:"About Library",d:"Facilities, services and information",u:J},
+{g:"About",i:"ph",c:"g",t:"Contact",d:"Contact the library support team",u:J+"index.php/contact"},
+{g:"About",i:"globe",c:"t",t:"All Services",d:"Explore the complete library portal",u:J},
+{g:"About",i:"home",c:"p",t:"RIE Bhopal website",d:"Official library website",u:J}
+];
+var $=function(i){return document.getElementById(i)},fav=[];
+try{fav=JSON.parse(localStorage.getItem("rie-fav")||"[]")}catch(e){}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function go(u){window.location.href=u}
+function ico(x){var c=C[x.c];return '<div class="ic" style="background:'+c[0]+";color:"+c[1]+'"><svg><use href="#'+x.i+'"/></svg></div>'}
+function row(x,k){var on=fav.indexOf(k)>-1;
+ return '<div class="li" role="button" tabindex="0" data-u="'+x.u+'">'+ico(x)+'<div class="tx"><b>'+esc(x.t)+"</b><small>"+esc(x.d)+'</small></div><button class="fv'+(on?" on":"")+'" data-f="'+k+'" aria-label="Favourite" aria-pressed="'+on+'"><svg><use href="#star"/></svg></button><svg class="chev"><use href="#chev"/></svg></div>'}
+function list(g){var o="";S.forEach(function(x,k){if(!g||x.g===g)o+=row(x,k)});return o}
+function draw(){
+ $("g4").innerHTML=S.slice(0,4).map(function(x){return '<button class="q" data-u="'+x.u+'">'+ico(x)+"<span>"+esc(x.t.replace("Institutional ","").replace("Library ",""))+"</span></button>"}).join("");
+ $("hs").innerHTML=S.filter(function(x){return x.g==="Digital"}).map(function(x){return '<button class="dc" data-u="'+x.u+'">'+ico(x)+"<b>"+esc(x.t)+"</b><small>"+esc(x.d.split(" and ")[0])+"</small></button>"}).join("");
+ $("rs").innerHTML=list("Research");$("up").innerHTML=list("Updates");$("cl").innerHTML=list("About");
+ var f=S.map(function(x,k){return fav.indexOf(k)>-1?row(x,k):""}).join("");
+ $("favs").style.display=f?"":"none";$("fl").innerHTML=f;
+ ex();
+}
+var cat="";
+function ex(){var gs=["","Services","Digital","Research","Updates","About"];
+ $("chips").innerHTML=gs.map(function(g){return '<button class="ch'+(g===cat?" on":"")+'" data-c="'+g+'">'+(g||"All")+"</button>"}).join("");
+ $("el").innerHTML=list(cat)}
+function find(){var v=$("q").value.toLowerCase().trim();
+ $("res").style.display=v?"":"none";$("home").style.display=v?"none":"";
+ if(!v)return;var o="",n=0;
+ S.forEach(function(x,k){if((x.t+" "+x.d+" "+x.g).toLowerCase().indexOf(v)>-1){o+=row(x,k);n++}});
+ $("rl").innerHTML=o||'<div class="emp">No service found for "'+esc(v)+'". Try catalogue, journals or ONOS.</div>';
+ $("rc").textContent=n+" found"}
+$("q").oninput=find;
+document.addEventListener("click",function(e){
+ var f=e.target.closest("[data-f]");
+ if(f){e.stopPropagation();var k=+f.dataset.f,i=fav.indexOf(k);i>-1?fav.splice(i,1):fav.push(k);try{localStorage.setItem("rie-fav",JSON.stringify(fav))}catch(x){}draw();find();return}
+ var c=e.target.closest("[data-c]");if(c){cat=c.dataset.c;ex();return}
+ var t=e.target.closest("[data-t]");
+ if(t){document.querySelectorAll(".pg").forEach(function(p){p.classList.remove("on")});$("p-"+t.dataset.t).classList.add("on");
+  document.querySelectorAll("nav button").forEach(function(b){b.classList.toggle("on",b===t)});window.scrollTo(0,0);return}
+ var u=e.target.closest("[data-u]");if(u)go(u.dataset.u)});
+document.addEventListener("keydown",function(e){if(e.key==="Enter"&&e.target.classList.contains("li"))go(e.target.dataset.u)});
+var h=new Date().getHours();$("gr").textContent=h<12?"Good morning":h<17?"Good afternoon":"Good evening";
+function net(){$("off").style.display=navigator.onLine?"none":"block"}
+addEventListener("online",net);addEventListener("offline",net);net();
+draw();
+</script>
+</body>
+</html>
