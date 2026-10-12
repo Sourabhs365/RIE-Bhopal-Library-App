@@ -33,26 +33,50 @@ jobs:
           echo "ANDROID_HOME=$ANDROID_HOME" >> $GITHUB_ENV
           echo "ANDROID_SDK_ROOT=$ANDROID_HOME" >> $GITHUB_ENV
 
-          # Accept all licenses automatically
           yes | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager --licenses > /dev/null 2>&1 || true
 
-          # Install valid tools only (no legacy 'tools' package)
           /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager \
             "platform-tools" \
             "platforms;android-34" \
             "build-tools;34.0.0"
 
-      - name: Grant execute permission for Gradle wrapper
-        run: chmod +x ./gradlew
+      - name: Find and Build with Gradle Wrapper
+        shell: bash
+        run: |
+          # रेपो में gradlew फ़ाइल ढूँढें
+          GRADLEW_FILE=$(find . -name "gradlew" -type f | head -n 1)
 
-      - name: Build debug APK
-        run: ./gradlew :app:assembleDebug --stacktrace
+          if [ -z "$GRADLEW_FILE" ]; then
+            echo "Error: gradlew फ़ाइल पूरे रिपॉजिटरी में कहीं नहीं मिली!"
+            echo "फ़ोल्डर लिस्टिंग:"
+            ls -la
+            exit 1
+          fi
+
+          PROJECT_DIR=$(dirname "$GRADLEW_FILE")
+          echo "Found gradlew at: $GRADLEW_FILE"
+          echo "Entering project directory: $PROJECT_DIR"
+
+          chmod +x "$GRADLEW_FILE"
+          cd "$PROJECT_DIR"
+          ./gradlew assembleDebug --stacktrace
+
+      - name: Locate Generated APK
+        shell: bash
+        run: |
+          APK_FILE=$(find . -name "*debug*.apk" -type f | head -n 1)
+          if [ -z "$APK_FILE" ]; then
+            echo "APK फ़ाइल नहीं मिली!"
+            exit 1
+          fi
+          echo "Found APK at: $APK_FILE"
+          echo "APK_PATH=$APK_FILE" >> $GITHUB_ENV
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: rie-bhopal-library-debug-apk
-          path: app/build/outputs/apk/debug/app-debug.apk
+          path: ${{ env.APK_PATH }}
           if-no-files-found: error
 
       - name: Create GitHub Release
@@ -61,6 +85,6 @@ jobs:
         with:
           tag_name: v1.0.${{ github.run_number }}
           name: RIE Bhopal Library v1.0.${{ github.run_number }}
-          files: app/build/outputs/apk/debug/app-debug.apk
+          files: ${{ env.APK_PATH }}
           generate_release_notes: false
           fail_on_unmatched_files: true
