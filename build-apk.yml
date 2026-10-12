@@ -24,7 +24,11 @@ jobs:
         with:
           distribution: temurin
           java-version: "17"
-          cache: gradle
+
+      - name: Setup Gradle 8.5
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: "8.5"
 
       - name: Setup Android SDK
         shell: bash
@@ -40,17 +44,30 @@ jobs:
             "platforms;android-34" \
             "build-tools;34.0.0"
 
-      - name: Grant execute permission for Gradle wrapper
-        run: chmod +x ./gradlew
+      - name: Build Debug APK
+        shell: bash
+        run: |
+          gradle :app:assembleDebug --stacktrace
 
-      - name: Build debug APK
-        run: ./gradlew :app:assembleDebug --stacktrace
+      - name: Locate Generated APK
+        shell: bash
+        run: |
+          APK_FILE=$(find app/build/outputs/apk -name "*.apk" -type f | head -n 1)
+          if [ -z "$APK_FILE" ]; then
+            APK_FILE=$(find . -name "*.apk" -type f | head -n 1)
+          fi
+          if [ -z "$APK_FILE" ]; then
+            echo "Error: APK file not generated!"
+            exit 1
+          fi
+          echo "Found APK at: $APK_FILE"
+          echo "APK_PATH=$APK_FILE" >> $GITHUB_ENV
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: rie-bhopal-library-debug-apk
-          path: app/build/outputs/apk/debug/app-debug.apk
+          path: ${{ env.APK_PATH }}
           if-no-files-found: error
 
       - name: Create GitHub Release
@@ -59,6 +76,6 @@ jobs:
         with:
           tag_name: v1.0.${{ github.run_number }}
           name: RIE Bhopal Library v1.0.${{ github.run_number }}
-          files: app/build/outputs/apk/debug/app-debug.apk
+          files: ${{ env.APK_PATH }}
           generate_release_notes: false
           fail_on_unmatched_files: true
