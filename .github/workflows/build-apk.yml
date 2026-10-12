@@ -24,7 +24,9 @@ jobs:
         with:
           distribution: temurin
           java-version: "17"
-          cache: gradle
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
 
       - name: Setup Android SDK
         shell: bash
@@ -40,33 +42,24 @@ jobs:
             "platforms;android-34" \
             "build-tools;34.0.0"
 
-      - name: Find and Build with Gradle Wrapper
+      - name: Build Debug APK
         shell: bash
         run: |
-          # रेपो में gradlew फ़ाइल ढूँढें
-          GRADLEW_FILE=$(find . -name "gradlew" -type f | head -n 1)
-
-          if [ -z "$GRADLEW_FILE" ]; then
-            echo "Error: gradlew फ़ाइल पूरे रिपॉजिटरी में कहीं नहीं मिली!"
-            echo "फ़ोल्डर लिस्टिंग:"
-            ls -la
-            exit 1
+          # अगर gradlew नहीं है तो gradle कमांड से सीधा बिल्ड करें
+          if [ -f "./gradlew" ]; then
+            chmod +x ./gradlew
+            ./gradlew assembleDebug --stacktrace
+          else
+            echo "gradlew not found, building directly with installed gradle..."
+            gradle assembleDebug --stacktrace
           fi
-
-          PROJECT_DIR=$(dirname "$GRADLEW_FILE")
-          echo "Found gradlew at: $GRADLEW_FILE"
-          echo "Entering project directory: $PROJECT_DIR"
-
-          chmod +x "$GRADLEW_FILE"
-          cd "$PROJECT_DIR"
-          ./gradlew assembleDebug --stacktrace
 
       - name: Locate Generated APK
         shell: bash
         run: |
-          APK_FILE=$(find . -name "*debug*.apk" -type f | head -n 1)
+          APK_FILE=$(find . -name "*.apk" -type f | head -n 1)
           if [ -z "$APK_FILE" ]; then
-            echo "APK फ़ाइल नहीं मिली!"
+            echo "Error: APK file not generated!"
             exit 1
           fi
           echo "Found APK at: $APK_FILE"
