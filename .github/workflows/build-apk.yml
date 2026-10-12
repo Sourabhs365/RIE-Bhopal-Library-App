@@ -25,8 +25,10 @@ jobs:
           distribution: temurin
           java-version: "17"
 
-      - name: Setup Gradle
+      - name: Setup Gradle 8.5
         uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: "8.5"
 
       - name: Setup Android SDK
         shell: bash
@@ -45,14 +47,7 @@ jobs:
       - name: Build Debug APK
         shell: bash
         run: |
-          # अगर gradlew नहीं है तो gradle कमांड से सीधा बिल्ड करें
-          if [ -f "./gradlew" ]; then
-            chmod +x ./gradlew
-            ./gradlew assembleDebug --stacktrace
-          else
-            echo "gradlew not found, building directly with installed gradle..."
-            gradle assembleDebug --stacktrace
-          fi
+          gradle assembleDebug --stacktrace
 
       - name: Locate Generated APK
         shell: bash
