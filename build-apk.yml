@@ -20,28 +20,37 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up JDK 17
-        uses: actions/setup-java@v5
+        uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: "17"
           cache: gradle
 
-      - name: Setup Android SDK without deprecated action
+      - name: Setup Android SDK
         shell: bash
         run: |
-          echo "ANDROID_SDK_ROOT=/usr/local/lib/android/sdk" >> $GITHUB_ENV
-          echo "ANDROID_HOME=/usr/local/lib/android/sdk" >> $GITHUB_ENV
-          if [ -x "/usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager" ]; then
-            yes | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager --licenses
-            /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager \
-              "platform-tools" \
-              "platforms;android-34" \
-              "build-tools;34.0.0"
+          # SDK path export
+          export ANDROID_HOME="/usr/local/lib/android/sdk"
+          echo "ANDROID_HOME=$ANDROID_HOME" >> $GITHUB_ENV
+          echo "ANDROID_SDK_ROOT=$ANDROID_HOME" >> $GITHUB_ENV
+
+          # SDKManager ढूँढें (PATH या डिफ़ॉल्ट लोकेशन्स से)
+          if command -v sdkmanager &> /dev/null; then
+            SDKMANAGER="sdkmanager"
+          elif [ -x "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" ]; then
+            SDKMANAGER="$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
           else
-            echo "Android SDK cmdline-tools not found"
-            ls -R /usr/local/lib/android/sdk || true
-            exit 1
+            # अगर latest न हो तो पहला उपलब्ध sdkmanager उठाएगा
+            SDKMANAGER=$(find "$ANDROID_HOME/cmdline-tools" -name sdkmanager -type f -perm /111 2>/dev/null | head -n 1)
           fi
+
+          echo "Using sdkmanager from: $SDKMANAGER"
+
+          # सभी लाइसेंस स्वीकार करें
+          yes | $SDKMANAGER --licenses > /dev/null 2>&1 || true
+
+          # ज़रूरी पैकेजेस इन्स्टॉल करें
+          $SDKMANAGER "platform-tools" "platforms;android-34" "build-tools;34.0.0"
 
       - name: Grant execute permission
         run: chmod +x ./gradlew
